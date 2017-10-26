@@ -15,7 +15,22 @@
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
-      <?php var_dump($voiture); ?>
+      <?php var_dump($moto);
+      foreach ($afficheVoiture as $key => $value) {
+        ?>
+        <article class="">
+          <h2><?php echo $value['nom_vehicule']; ?></h2>
+          <h4><?php echo $value['marque_vehicule']; ?></h4>
+          <h6><?php echo $value['type_vehicule']; ?></h6>
+          <div class="">
+            <p><?php echo $value['poids']; ?></p>
+            <p><?php echo $value['couleur']; ?></p>
+            <p><?php echo $value['annee_sortie']; ?></p>
+            <p><?php echo $value['nbPorte']; ?></p>
+          </div>
+        </article>
+        <?php
+      } ?>
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
