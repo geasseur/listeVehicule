@@ -53,7 +53,7 @@ class VoitureManager{
 
     //function for list all voiture objects
     public function afficheVoiture(){
-      $afficheVoiture= $this->_bdd->query('SELECT type_vehicule, nom_vehicule, marque_vehicule, poids, couleur, annee_sortie, nbPorte from Vehicule WHERE type_vehicule = "voiture"');
+      $afficheVoiture= $this->_bdd->query('SELECT id, type_vehicule, nom_vehicule, marque_vehicule, poids, couleur, annee_sortie, nbPorte from Vehicule WHERE type_vehicule = "voiture"');
 
       return $afficheVoiture->fetchAll();
     }

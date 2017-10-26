@@ -1,4 +1,5 @@
 <?php
+session_start();
 function chargerClasse($classname)
 {
   include 'model/class/'.$classname.'.php';

@@ -1,4 +1,26 @@
 <?php
+$motoManager = new MotoManager($bdd);
+$voitureManager = new VoitureManager($bdd);
+$camionManager = new CamionManager($bdd);
+$afficheVoiture = $voitureManager->afficheVoiture();
+$afficheMoto = $motoManager->afficheMoto();
+$afficheCamion = $camionManager->afficheCamion();
+if (isset($_POST['effacerMoto']) and !empty($_POST['id']) and !empty($_POST['typeVehicule'])) {
+  $motoManager->deleteMoto($_POST['id'], $_POST['typeVehicule']);
+}
+
+if (isset($_POST['effacerVoiture']) and !empty($_POST['id']) and !empty($_POST['typeVehicule'])) {
+  $voitureManager->deleteVoiture($_POST['id'], $_POST['typeVehicule']);
+}
+
+if (isset($_POST['effacerCamion']) and !empty($_POST['id']) and !empty($_POST['typeVehicule'])) {
+  $camionManager->deleteCamion($_POST['id'], $_POST['typeVehicule']);
+}
+
+if (!isset($_POST['updateVoiture']) and !isset($_POST['updateMoto'])) and !isset($_POST['updateCamion']) and !isset($_POST['']) {
+  # code...
+}
+
 // $voiture = new Voiture([
 //   'typeVehicule'=>'voiture',
 //   'nomVehicule'=>'lion',
@@ -20,7 +42,7 @@
 
 
 //COMMANDE POUR MOTO TEST
-$motoManager = new MotoManager($bdd);
+
 //var_dump($MotoManager);
 //$nouvelleMoto = $motoManager->addMoto($moto);
 //$motoManager->deleteMoto(7, 'moto');
@@ -30,10 +52,9 @@ $motoManager = new MotoManager($bdd);
 //COMMANDE POUR VOITURE TEST
 // $nouvellevoiture = $voitureManager->addVoiture($voiture);
 //$voitureManager->deleteVoiture(2, 'voiture');
-$voitureManager = new VoitureManager($bdd);
-$voitureManager->updateVoiture(3, 'voiture', 'super5', 'renault', 1.3, 'white', 1989, 5);
-$afficheVoiture = $voitureManager->afficheVoiture();
-$afficheMoto = $motoManager->afficheMoto();
+
+//$voitureManager->updateVoiture(3, 'voiture', 'super5', 'renault', 1.3, 'white', 1989, 5);
+
 
 //var_dump($afficheVoiture);
 
@@ -47,9 +68,8 @@ $afficheMoto = $motoManager->afficheMoto();
 //     'anneeSortie'=>2102,
 //     'hauteur'=>2.5
 //   ]);
-$camionManager = new CamionManager($bdd);
+
 //$nouveauCamion = $camionManager->addCamion($camion);
 //$camionManager->deleteCamion(9, 'camion');
-$afficheCamion = $camionManager->afficheCamion();
 //$camionManager->updateCamion(8, 'camion', 'colosse', 'mercedes', 15.4, 'grey', 2017, 3.1);
   //var_dump($camion); ?>
