@@ -7,4 +7,5 @@ function chargerClasse($classname)
 spl_autoload_register('chargerClasse');
 require 'model/connexion.php';
 require 'control/controlIndex.php';
-require 'vue/vueIndex.php'; ?>
+require 'vue/vueIndex.php';
+//machin ?>
