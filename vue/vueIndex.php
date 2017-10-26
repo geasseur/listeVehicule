@@ -15,22 +15,63 @@
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
-      <?php var_dump($moto);
-      foreach ($afficheVoiture as $key => $value) {
-        ?>
-        <article class="">
-          <h2><?php echo $value['nom_vehicule']; ?></h2>
-          <h4><?php echo $value['marque_vehicule']; ?></h4>
-          <h6><?php echo $value['type_vehicule']; ?></h6>
-          <div class="">
-            <p><?php echo $value['poids']; ?></p>
-            <p><?php echo $value['couleur']; ?></p>
-            <p><?php echo $value['annee_sortie']; ?></p>
-            <p><?php echo $value['nbPorte']; ?></p>
-          </div>
-        </article>
+      <section>
+        <h2>Voiture</h2>
         <?php
-      } ?>
+        foreach ($afficheVoiture as $key => $value) {
+          ?>
+          <article class="">
+            <h2>nom Vehicule : <?php echo $value['nom_vehicule']; ?></h2>
+            <h4>marque : <?php echo $value['marque_vehicule']; ?></h4>
+            <h6>type : <?php echo $value['type_vehicule']; ?></h6>
+            <div class="">
+              <p>poids : <?php echo $value['poids']; ?> tonnes</p>
+              <p>couleur : <?php echo $value['couleur']; ?></p>
+              <p>annee sortie : <?php echo $value['annee_sortie']; ?></p>
+              <p>nombre de porte : <?php echo $value['nbPorte']; ?></p>
+            </div>
+          </article>
+          <?php
+        } ?>
+      </section>
+      <section>
+        <h2>Moto</h2>
+        <?php
+        foreach ($afficheMoto as $key => $value) {
+          ?>
+          <article class="">
+            <h2>nom Vehicule : <?php echo $value['nom_vehicule']; ?></h2>
+            <h4>marque : <?php echo $value['marque_vehicule']; ?></h4>
+            <h6>type : <?php echo $value['type_vehicule']; ?></h6>
+            <div class="">
+              <p>poids : <?php echo $value['poids']; ?> tonnes</p>
+              <p>couleur : <?php echo $value['couleur']; ?></p>
+              <p>annee sortie : <?php echo $value['annee_sortie']; ?></p>
+              <p>volume : <?php echo $value['volume']; ?> cm3</p>
+            </div>
+          </article>
+          <?php
+        } ?>
+      </section>
+      <section>
+        <h2>Camion</h2>
+        <?php
+        foreach ($afficheCamion as $key => $value) {
+          ?>
+          <article class="">
+            <h2>nom Vehicule : <?php echo $value['nom_vehicule']; ?></h2>
+            <h4>marque : <?php echo $value['marque_vehicule']; ?></h4>
+            <h6>type : <?php echo $value['type_vehicule']; ?></h6>
+            <div class="">
+              <p>poids : <?php echo $value['poids']; ?> tonnes</p>
+              <p>couleur : <?php echo $value['couleur']; ?></p>
+              <p>annee sortie : <?php echo $value['annee_sortie']; ?></p>
+              <p>hauteur : <?php echo $value['hauteur']; ?> Metre</p>
+            </div>
+          </article>
+          <?php
+        } ?>
+      </section>
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>

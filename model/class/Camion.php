@@ -1,7 +1,6 @@
 <?php
-class Camion{
+class Camion extends Vehicule{
   protected $hauteur;
-
     /*Get the value of Hauteur*/
     public function getHauteur()
     {

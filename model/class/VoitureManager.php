@@ -40,20 +40,20 @@ class VoitureManager{
 
     //function for updated a voiture object on the data base
     public function updateVoiture($id,$type_vehicule, $nom_vehicule, $marque_vehicule, $poids, $couleur, $annee_sortie, $nbPorte){
-      $miseAJourVoiture = $this->_bdd->prepare('UPDATE Vehicule SET type_vehicule = '.$type_vehicule.', nom_vehicule = '.$nom_vehicule.', marque_vehicule = '.$marque_vehicule.', poids = '.$poids.', couleur = '.$couleur.', annee_sortie = '.$annee_sortie.', nbPorte = '.$nbPorte.' WHERE id =' .$id);
-      // $miseAJourVoiture->bindValue(':type_vehicule',$type_vehicule, PDO::PARAM_STR);
-      // $miseAJourVoiture->bindValue(':nom_vehicule',$nom_vehicule, PDO::PARAM_STR);
-      // $miseAJourVoiture->bindValue(':marque_vehicule',$marque_vehicule, PDO::PARAM_STR);
-      // $miseAJourVoiture->bindValue(':poids',$poids, PDO::PARAM_INT);
-      // $miseAJourVoiture->bindValue(':couleur',$couleur, PDO::PARAM_STR);
-      // $miseAJourVoiture->bindValue(':annee_sortie',$annee_sortie, PDO::PARAM_INT);
-      // $miseAJourVoiture->bindValue(':nbPorte',$nbPorte, PDO::PARAM_INT);
+      $miseAJourVoiture = $this->_bdd->prepare('UPDATE Vehicule SET type_vehicule = :type_vehicule, nom_vehicule = :nom_vehicule, marque_vehicule = :marque_vehicule, poids = :poids, couleur = :couleur, annee_sortie = :annee_sortie, nbPorte = :nbPorte WHERE id = '.$id.' ');
+      $miseAJourVoiture->bindValue(':type_vehicule',$type_vehicule, PDO::PARAM_STR);
+      $miseAJourVoiture->bindValue(':nom_vehicule',$nom_vehicule, PDO::PARAM_STR);
+      $miseAJourVoiture->bindValue(':marque_vehicule',$marque_vehicule, PDO::PARAM_STR);
+      $miseAJourVoiture->bindValue(':poids',$poids, PDO::PARAM_INT);
+      $miseAJourVoiture->bindValue(':couleur',$couleur, PDO::PARAM_STR);
+      $miseAJourVoiture->bindValue(':annee_sortie',$annee_sortie, PDO::PARAM_INT);
+      $miseAJourVoiture->bindValue(':nbPorte',$nbPorte, PDO::PARAM_INT);
       $miseAJourVoiture->execute();
     }
 
     //function for list all voiture objects
     public function afficheVoiture(){
-      $afficheVoiture= $this->_bdd->query('SELECT type_vehicule, nom_vehicule, marque_vehicule, poids, couleur, annee_sortie, nbPorte from Vehicule');
+      $afficheVoiture= $this->_bdd->query('SELECT type_vehicule, nom_vehicule, marque_vehicule, poids, couleur, annee_sortie, nbPorte from Vehicule WHERE type_vehicule = "voiture"');
 
       return $afficheVoiture->fetchAll();
     }
