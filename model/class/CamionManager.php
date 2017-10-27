@@ -50,9 +50,15 @@ class CamionManager{
     $miseAJourCamion->execute();
   }
 
-  public function afficheCamion(){
+  public function afficheCamions(){
     $afficheCamion= $this->_bdd->query('SELECT id, type_vehicule, nom_vehicule, marque_vehicule, poids, couleur, annee_sortie, hauteur from Vehicule WHERE type_vehicule = "camion"');
 
     return $afficheCamion->fetchAll();
+  }
+
+  public function afficheCamion($id){
+    $afficheCamion= $this->_bdd->query('SELECT id, type_vehicule, nom_vehicule, marque_vehicule, poids, couleur, annee_sortie, hauteur from Vehicule WHERE id = '.$id.' AND type_vehicule = "camion"');
+
+    return $afficheCamion->fetch();
   }
 } ?>

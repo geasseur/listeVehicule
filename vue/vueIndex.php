@@ -15,7 +15,6 @@
         <script src="../js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
-      <main>
         <header>
           <h1>Liste Vehicule</h1>
           <article class="card">
@@ -33,8 +32,8 @@
             </article>
             <?php if (isset($_POST['voiture'])) {
               ?>
-              <h2>Nouvelle Voiture</h2>
-              <form class="formulaireCreation" action="" method="post">
+              <h3>Nouvelle Voiture</h3>
+              <form class=" formulaireCreation" action="" method="post">
                 <input style="display:none" type="text" name="id" value=""><br>
                 <label for="">nom du vehicule : </label>
                 <input type="text" name="nomVehicule" value=""><br>
@@ -54,7 +53,7 @@
             }
             if (isset($_POST['moto'])) {
               ?>
-              <h2>Nouvelle moto</h2>
+              <h3>Nouvelle moto</h3>
               <form class="formulaireCreation" action="" method="post">
                 <input style="display:none" type="text" name="id" value=""><br>
                 <label for="">nom du vehicule : </label>
@@ -75,7 +74,7 @@
             }
             if (isset($_POST['camion'])) {
               ?>
-              <h2>Nouveau Camion</h2>
+              <h3>Nouveau Camion</h3>
               <form class="formulaireCreation" action="" method="post">
                 <input style="display:none" type="text" name="id" value=""><br>
                 <label for="">nom du vehicule : </label>
@@ -97,181 +96,182 @@
 
           </article>
         </header>
-        <h2>Voiture</h2>
-        <section class='d-flex justify-content-around'>
-          <?php
-          foreach ($afficheVoiture as $key => $value) {
-            ?>
-            <article class="carteVehicule card-block col-sm-12 col-md-5 col-lg-3 d-inline-block card">
-              <h2>nom vehicule : <?php echo $value['nom_vehicule']; ?></h2>
-              <h4>marque : <?php echo $value['marque_vehicule']; ?></h4>
-              <h6>type : <?php echo $value['type_vehicule']; ?></h6>
-              <div class="">
-                <p>poids : <?php echo $value['poids']; ?> tonnes</p>
-                <p>couleur : <?php echo $value['couleur']; ?></p>
-                <p>annee sortie : <?php echo $value['annee_sortie']; ?></p>
-                <p>nombre de porte : <?php echo $value['nbPorte']; ?></p>
-              </div>
-              <section>
-                <form class="" action="control/controlDetail" method="post">
-                  <input style="display:none" type="text" name="id" value="<?php echo $value['id']; ?>">
-                  <input type="submit" name="detailMoto" value="Detail">
-                </form>
-                <form class="" action="" method="post">
-                  <input style="display:none" type="text" name="id" value="<?php echo $value['id']; ?>">
-                  <input style="display:none" type="text" name="typeVehicule" value="<?php echo $value['type_vehicule']; ?>">
-                  <input type="submit" name="effacerVoiture" value="Effacer">
-                </form>
-                <?php if (isset($_POST['formulaireVoiture'])) {?>
-                  <form class="" action="" method="post">
-                    <input style="display:none" type="text" name="id" value="<?php echo $value['id'];?>"><br>
-                    <label for="">type de vehicule : </label>
-                    <input type="text" name="typeVehicule" value="<?php echo $value['type_vehicule']; ?>"><br>
-                    <label for="">nom du vehicule : </label>
-                    <input type="text" name="nomVehicule" value="<?php echo $value['nom_vehicule']; ?>"><br>
-                    <label for="">marque du vehicule : </label>
-                    <input type="text" name="marqueVehicule" value="<?php echo $value['marque_vehicule']; ?>"><br>
-                    <label for="">poids : </label>
-                    <input type="text" name="poids" value="<?php echo $value['poids']; ?>"><br>
-                    <label for="">couleur : </label>
-                    <input type="text" name="couleur" value="<?php echo $value['couleur']; ?>"><br>
-                    <label for="">annee de sortie : </label>
-                    <input type="text" name="anneeSortie" value="<?php echo $value['annee_sortie']; ?>"><br>
-                    <label for="">nombre de Porte : </label>
-                    <input type="text" name="nbPorte" value="<?php echo $value['nbPorte']; ?>"><br>
-                    <input type="submit" name="updateVoiture" value="Mettre a Jour">
-                  </form>
-                  <?php
-                }
-                elseif (!isset($_POST['formulaireVoiture'])) {
-                  ?>
-                  <form class="" action="" method="post">
-                    <input type="submit" name="formulaireVoiture" value="update">
-                  </form>
-                  <?php
-                } ?>
-              </section>
-            </article>
+        <main>
+          <h3>Voiture</h3>
+          <section class='d-flex justify-content-around flex-wrap'>
             <?php
-          } ?>
-        </section>
-        <h2>Moto</h2>
-        <section class="d-flex justify-content-around">
-          <?php
-          foreach ($afficheMoto as $key => $value) {
-            ?>
-            <article class="carteVehicule card-block col-sm-12 col-md-5 col-lg-3 d-inline-block card">
-              <h2>nom Vehicule : <?php echo $value['nom_vehicule']; ?></h2>
-              <h4>marque : <?php echo $value['marque_vehicule']; ?></h4>
-              <h6>type : <?php echo $value['type_vehicule']; ?></h6>
-              <div class="">
-                <p>poids : <?php echo $value['poids']; ?> tonnes</p>
-                <p>couleur : <?php echo $value['couleur']; ?></p>
-                <p>annee sortie : <?php echo $value['annee_sortie']; ?></p>
-                <p>volume : <?php echo $value['volume']; ?> cm3</p>
-              </div>
-              <section>
-                <form class="" action="" method="post">
-                  <input style="display:none" type="text" name="id" value="<?php echo $value['id']; ?>">
-                  <input type="submit" name="detailMoto" value="Detail">
-                </form>
-                <form class="" action="" method="post">
-                  <input style="display:none" type="text" name="id" value="<?php echo $value['id']; ?>">
-                  <input style="display:none" type="text" name="typeVehicule" value="<?php echo $value['type_vehicule']; ?>">
-                  <input type="submit" name="effacerMoto" value="Effacer">
-                </form>
-                <?php if (isset($_POST['formulaireMoto'])) {?>
-                  <form class="" action="" method="post">
-                    <input style="display:none" type="text" name="id" value="<?php echo $value['id'];?>"><br>
-                    <label for="">type de vehicule : </label>
-                    <input type="text" name="typeVehicule" value="<?php echo $value['type_vehicule']; ?>"><br>
-                    <label for="">nom du vehicule : </label>
-                    <input type="text" name="nomVehicule" value="<?php echo $value['nom_vehicule']; ?>"><br>
-                    <label for="">marque du vehicule : </label>
-                    <input type="text" name="marqueVehicule" value="<?php echo $value['marque_vehicule']; ?>"><br>
-                    <label for="">poids : </label>
-                    <input type="text" name="poids" value="<?php echo $value['poids']; ?>"><br>
-                    <label for="">couleur : </label>
-                    <input type="text" name="couleur" value="<?php echo $value['couleur']; ?>"><br>
-                    <label for="">annee de sortie : </label>
-                    <input type="text" name="anneeSortie" value="<?php echo $value['annee_sortie']; ?>"><br>
-                    <label for="">volume : </label>
-                    <input type="text" name="volume" value="<?php echo $value['volume']; ?>"><br>
-                    <input type="submit" name="updateMoto" value="Mettre a Jour">
+            foreach ($afficheVoiture as $key => $value) {
+              ?>
+              <article class="carteVehicule card m-2 col-sm-12 col-md-5 col-lg-3 d-inline-block ">
+                <h3>nom vehicule : <?php echo $value['nom_vehicule']; ?></h3>
+                <h4>marque : <?php echo $value['marque_vehicule']; ?></h4>
+                <h6>type : <?php echo $value['type_vehicule']; ?></h6>
+                <div class="">
+                  <p>poids : <?php echo $value['poids']; ?> tonnes</p>
+                  <p>couleur : <?php echo $value['couleur']; ?></p>
+                  <p>annee sortie : <?php echo $value['annee_sortie']; ?></p>
+                  <p>nombre de porte : <?php echo $value['nbPorte']; ?></p>
+                </div>
+                <section>
+                  <form class="" action="control/controlDetail.php" method="post">
+                    <input style="display:none" type="text" name="id" value="<?php echo $value['id']; ?>">
+                    <input type="submit" name="detailVoiture" value="Detail">
                   </form>
-                  <?php
-                }
-                elseif (!isset($_POST['formulaireMoto'])) {
-                  ?>
                   <form class="" action="" method="post">
-                    <input type="submit" name="formulaireMoto" value="update">
+                    <input style="display:none" type="text" name="id" value="<?php echo $value['id']; ?>">
+                    <input style="display:none" type="text" name="typeVehicule" value="<?php echo $value['type_vehicule']; ?>">
+                    <input type="submit" name="effacerVoiture" value="Effacer">
                   </form>
-                  <?php
-                }?>
-              </section>
-            </article>
+                  <?php if (isset($_POST['formulaireVoiture'])) {?>
+                    <form class="" action="" method="post">
+                      <input style="display:none" type="text" name="id" value="<?php echo $value['id'];?>"><br>
+                      <label for="">type de vehicule : </label>
+                      <input type="text" name="typeVehicule" value="<?php echo $value['type_vehicule']; ?>"><br>
+                      <label for="">nom du vehicule : </label>
+                      <input type="text" name="nomVehicule" value="<?php echo $value['nom_vehicule']; ?>"><br>
+                      <label for="">marque du vehicule : </label>
+                      <input type="text" name="marqueVehicule" value="<?php echo $value['marque_vehicule']; ?>"><br>
+                      <label for="">poids : </label>
+                      <input type="text" name="poids" value="<?php echo $value['poids']; ?>"><br>
+                      <label for="">couleur : </label>
+                      <input type="text" name="couleur" value="<?php echo $value['couleur']; ?>"><br>
+                      <label for="">annee de sortie : </label>
+                      <input type="text" name="anneeSortie" value="<?php echo $value['annee_sortie']; ?>"><br>
+                      <label for="">nombre de Porte : </label>
+                      <input type="text" name="nbPorte" value="<?php echo $value['nbPorte']; ?>"><br>
+                      <input type="submit" name="updateVoiture" value="Mettre a Jour">
+                    </form>
+                    <?php
+                  }
+                  elseif (!isset($_POST['formulaireVoiture'])) {
+                    ?>
+                    <form class="" action="" method="post">
+                      <input type="submit" name="formulaireVoiture" value="update">
+                    </form>
+                    <?php
+                  } ?>
+                </section>
+              </article>
+              <?php
+            } ?>
+          </section>
+          <h3>Moto</h3>
+          <section class="d-flex justify-content-around flex-wrap">
             <?php
-          } ?>
-        </section>
-        <h2>Camion</h2>
-        <section class="d-flex justify-content-around">
-          <?php
-          foreach ($afficheCamion as $key => $value) {
-            ?>
-            <article class="carteVehicule card-block col-sm-12 col-md-5 col-lg-3 d-inline-block card">
-              <h2>nom Vehicule : <?php echo $value['nom_vehicule']; ?></h2>
-              <h4>marque : <?php echo $value['marque_vehicule']; ?></h4>
-              <h6>type : <?php echo $value['type_vehicule']; ?></h6>
-              <div class="">
-                <p>poids : <?php echo $value['poids']; ?> tonnes</p>
-                <p>couleur : <?php echo $value['couleur']; ?></p>
-                <p>annee sortie : <?php echo $value['annee_sortie']; ?></p>
-                <p>hauteur : <?php echo $value['hauteur']; ?> Metre</p>
-              </div>
-              <section>
-                <form class="" action="" method="post">
-                  <input style="display:none" type="text" name="id" value="<?php echo $value['id']; ?>">
-                  <input type="submit" name="detailCamion" value="Detail">
-                </form>
-                <form class="" action="" method="post">
-                  <input style="display:none" type="text" name="id" value="<?php echo $value['id']; ?>">
-                  <input style="display:none" type="text" name="typeVehicule" value="<?php echo $value['type_vehicule']; ?>">
-                  <input type="submit" name="effacerCamion" value="Effacer">
-                </form>
-                <?php if (isset($_POST['formulaireCamion'])) {?>
-                  <form class="" action="" method="post">
-                    <input style="display:none" type="text" name="id" value="<?php echo $value['id'];?>"><br>
-                    <label for="">type de vehicule : </label>
-                    <input type="text" name="typeVehicule" value="<?php echo $value['type_vehicule']; ?>"><br>
-                    <label for="">nom du vehicule : </label>
-                    <input type="text" name="nomVehicule" value="<?php echo $value['nom_vehicule']; ?>"><br>
-                    <label for="">marque du vehicule : </label>
-                    <input type="text" name="marqueVehicule" value="<?php echo $value['marque_vehicule']; ?>"><br>
-                    <label for="">poids : </label>
-                    <input type="text" name="poids" value="<?php echo $value['poids']; ?>"><br>
-                    <label for="">couleur : </label>
-                    <input type="text" name="couleur" value="<?php echo $value['couleur']; ?>"><br>
-                    <label for="">annee de sortie : </label>
-                    <input type="text" name="anneeSortie" value="<?php echo $value['annee_sortie']; ?>"><br>
-                    <label for="">volume : </label>
-                    <input type="text" name="hauteur" value="<?php echo $value['hauteur']; ?>"><br>
-                    <input type="submit" name="updateCamion" value="Mettre a Jour">
+            foreach ($afficheMoto as $key => $value) {
+              ?>
+              <article class="carteVehicule card m-2 col-sm-12 col-md-5 col-lg-3 d-inline-block">
+                <h3>nom Vehicule : <?php echo $value['nom_vehicule']; ?></h3>
+                <h4>marque : <?php echo $value['marque_vehicule']; ?></h4>
+                <h6>type : <?php echo $value['type_vehicule']; ?></h6>
+                <div class="">
+                  <p>poids : <?php echo $value['poids']; ?> tonnes</p>
+                  <p>couleur : <?php echo $value['couleur']; ?></p>
+                  <p>annee sortie : <?php echo $value['annee_sortie']; ?></p>
+                  <p>volume : <?php echo $value['volume']; ?> cm3</p>
+                </div>
+                <section>
+                  <form class="" action="control/controlDetail.php" method="post">
+                    <input style="display:none" type="text" name="id" value="<?php echo $value['id']; ?>">
+                    <input type="submit" name="detailMoto" value="Detail">
                   </form>
-                  <?php
-                }
-                elseif (!isset($_POST['formulaireMoto'])) {
-                  ?>
                   <form class="" action="" method="post">
-                    <input type="submit" name="formulaireCamion" value="update">
+                    <input style="display:none" type="text" name="id" value="<?php echo $value['id']; ?>">
+                    <input style="display:none" type="text" name="typeVehicule" value="<?php echo $value['type_vehicule']; ?>">
+                    <input type="submit" name="effacerMoto" value="Effacer">
                   </form>
-                  <?php
-                }?>
-              </section>
-            </article>
+                  <?php if (isset($_POST['formulaireMoto'])) {?>
+                    <form class="" action="" method="post">
+                      <input style="display:none" type="text" name="id" value="<?php echo $value['id'];?>"><br>
+                      <label for="">type de vehicule : </label>
+                      <input type="text" name="typeVehicule" value="<?php echo $value['type_vehicule']; ?>"><br>
+                      <label for="">nom du vehicule : </label>
+                      <input type="text" name="nomVehicule" value="<?php echo $value['nom_vehicule']; ?>"><br>
+                      <label for="">marque du vehicule : </label>
+                      <input type="text" name="marqueVehicule" value="<?php echo $value['marque_vehicule']; ?>"><br>
+                      <label for="">poids : </label>
+                      <input type="text" name="poids" value="<?php echo $value['poids']; ?>"><br>
+                      <label for="">couleur : </label>
+                      <input type="text" name="couleur" value="<?php echo $value['couleur']; ?>"><br>
+                      <label for="">annee de sortie : </label>
+                      <input type="text" name="anneeSortie" value="<?php echo $value['annee_sortie']; ?>"><br>
+                      <label for="">volume : </label>
+                      <input type="text" name="volume" value="<?php echo $value['volume']; ?>"><br>
+                      <input type="submit" name="updateMoto" value="Mettre a Jour">
+                    </form>
+                    <?php
+                  }
+                  elseif (!isset($_POST['formulaireMoto'])) {
+                    ?>
+                    <form class="" action="" method="post">
+                      <input type="submit" name="formulaireMoto" value="update">
+                    </form>
+                    <?php
+                  }?>
+                </section>
+              </article>
+              <?php
+            } ?>
+          </section>
+          <h3>Camion</h3>
+          <section class="d-flex justify-content-around flex-wrap">
             <?php
-          } ?>
-        </section>
-      </main>
+            foreach ($afficheCamion as $key => $value) {
+              ?>
+              <article class="carteVehicule card m-2 col-sm-12 col-md-5 col-lg-3 d-inline-block">
+                <h3>nom Vehicule : <?php echo $value['nom_vehicule']; ?></h3>
+                <h4>marque : <?php echo $value['marque_vehicule']; ?></h4>
+                <h6>type : <?php echo $value['type_vehicule']; ?></h6>
+                <div class="">
+                  <p>poids : <?php echo $value['poids']; ?> tonnes</p>
+                  <p>couleur : <?php echo $value['couleur']; ?></p>
+                  <p>annee sortie : <?php echo $value['annee_sortie']; ?></p>
+                  <p>hauteur : <?php echo $value['hauteur']; ?> Metre</p>
+                </div>
+                <section>
+                  <form class="" action="control/controlDetail.php" method="post">
+                    <input style="display:none" type="text" name="id" value="<?php echo $value['id']; ?>">
+                    <input type="submit" name="detailCamion" value="Detail">
+                  </form>
+                  <form class="" action="" method="post">
+                    <input style="display:none" type="text" name="id" value="<?php echo $value['id']; ?>">
+                    <input style="display:none" type="text" name="typeVehicule" value="<?php echo $value['type_vehicule']; ?>">
+                    <input type="submit" name="effacerCamion" value="Effacer">
+                  </form>
+                  <?php if (isset($_POST['formulaireCamion'])) {?>
+                    <form class="" action="" method="post">
+                      <input style="display:none" type="text" name="id" value="<?php echo $value['id'];?>"><br>
+                      <label for="">type de vehicule : </label>
+                      <input type="text" name="typeVehicule" value="<?php echo $value['type_vehicule']; ?>"><br>
+                      <label for="">nom du vehicule : </label>
+                      <input type="text" name="nomVehicule" value="<?php echo $value['nom_vehicule']; ?>"><br>
+                      <label for="">marque du vehicule : </label>
+                      <input type="text" name="marqueVehicule" value="<?php echo $value['marque_vehicule']; ?>"><br>
+                      <label for="">poids : </label>
+                      <input type="text" name="poids" value="<?php echo $value['poids']; ?>"><br>
+                      <label for="">couleur : </label>
+                      <input type="text" name="couleur" value="<?php echo $value['couleur']; ?>"><br>
+                      <label for="">annee de sortie : </label>
+                      <input type="text" name="anneeSortie" value="<?php echo $value['annee_sortie']; ?>"><br>
+                      <label for="">volume : </label>
+                      <input type="text" name="hauteur" value="<?php echo $value['hauteur']; ?>"><br>
+                      <input type="submit" name="updateCamion" value="Mettre a Jour">
+                    </form>
+                    <?php
+                  }
+                  elseif (!isset($_POST['formulaireMoto'])) {
+                    ?>
+                    <form class="" action="" method="post">
+                      <input type="submit" name="formulaireCamion" value="update">
+                    </form>
+                    <?php
+                  }?>
+                </section>
+              </article>
+              <?php
+            } ?>
+          </section>
+        </main>
 
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>

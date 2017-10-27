@@ -52,10 +52,16 @@ class VoitureManager{
     }
 
     //function for list all voiture objects
-    public function afficheVoiture(){
+    public function afficheVoitures(){
       $afficheVoiture= $this->_bdd->query('SELECT id, type_vehicule, nom_vehicule, marque_vehicule, poids, couleur, annee_sortie, nbPorte from Vehicule WHERE type_vehicule = "voiture"');
 
       return $afficheVoiture->fetchAll();
+    }
+
+    public function afficheVoiture($id){
+      $afficheVoiture= $this->_bdd->query('SELECT id, type_vehicule, nom_vehicule, marque_vehicule, poids, couleur, annee_sortie, nbPorte from Vehicule WHERE id = '.$id.' AND type_vehicule = "voiture"');
+
+      return $afficheVoiture->fetch();
     }
 
 } ?>

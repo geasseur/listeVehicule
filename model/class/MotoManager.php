@@ -52,10 +52,16 @@ class MotoManager{
     }
 
     //function for list all bike objects
-    public function afficheMoto(){
+    public function afficheMotos(){
       $afficheMoto= $this->_bdd->query('SELECT id, type_vehicule, nom_vehicule, marque_vehicule, poids, couleur, annee_sortie, volume from Vehicule WHERE type_vehicule = "moto"');
 
       return $afficheMoto->fetchAll();
+    }
+
+    public function afficheMoto($id){
+      $afficheMoto= $this->_bdd->query('SELECT id, type_vehicule, nom_vehicule, marque_vehicule, poids, couleur, annee_sortie, volume from Vehicule WHERE id = '.$id.' AND type_vehicule = "moto"');
+
+      return $afficheMoto->fetch();
     }
 
 } ?>

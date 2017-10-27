@@ -4,9 +4,9 @@
 $motoManager = new MotoManager($bdd);
 $voitureManager = new VoitureManager($bdd);
 $camionManager = new CamionManager($bdd);
-$afficheVoiture = $voitureManager->afficheVoiture();
-$afficheMoto = $motoManager->afficheMoto();
-$afficheCamion = $camionManager->afficheCamion();
+$afficheVoiture = $voitureManager->afficheVoitures();
+$afficheMoto = $motoManager->afficheMotos();
+$afficheCamion = $camionManager->afficheCamions();
 
 //CONTROLER PART FOR DELETE VEHICULE
 
@@ -83,19 +83,19 @@ if (isset($_POST['newCamion'])) {
 
 if (isset($_POST['updateVoiture'])) {
   $voitureManager->updateVoiture($_POST['id'], $_POST['typeVehicule'], $_POST['nomVehicule'], $_POST['marqueVehicule'], $_POST['poids'], $_POST['couleur'], $_POST['anneeSortie'], $_POST['nbPorte']);
-  $afficheVoiture = $voitureManager->afficheVoiture();
+  $afficheVoiture = $voitureManager->afficheVoitures();
 }
 
 //UPDATE BIKE
 if (isset($_POST['updateMoto'])) {
   $voitureManager->updateVoiture($_POST['id'], $_POST['typeVehicule'], $_POST['nomVehicule'], $_POST['marqueVehicule'], $_POST['poids'], $_POST['couleur'], $_POST['anneeSortie'], $_POST['volume']);
-  $afficheMoto = $motoManager->afficheMoto();
+  $afficheMoto = $motoManager->afficheMotos();
 }
 
 //UPDATE TRUCK
 if (isset($_POST['updateCamion'])) {
   $voitureManager->updateVoiture($_POST['id'], $_POST['typeVehicule'], $_POST['nomVehicule'], $_POST['marqueVehicule'], $_POST['poids'], $_POST['couleur'], $_POST['anneeSortie'], $_POST['hauteur']);
-  $afficheCamion = $camionManager->afficheCamion();
+  $afficheCamion = $camionManager->afficheCamions();
 }
 
 // if (!isset($_POST['updateVoiture']) and !isset($_POST['updateMoto'])) and !isset($_POST['updateCamion']) and !isset($_POST['']) {
