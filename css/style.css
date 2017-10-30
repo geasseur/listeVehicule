@@ -3,7 +3,7 @@
   margin: auto;
 }
 
-h1, h2, h3, h4, h5, h6, p,.carteVehicule form{
+h1, h2, h3, h4, h5, h6, p,.carteVehicule form, .detail section{
   text-align: center;
 }
 
@@ -12,4 +12,8 @@ h1, h2, h3, h4, h5, h6, p,.carteVehicule form{
 h2{
   margin-top: 20px;
   padding-top: 20px;
+}
+
+body{
+  background-image: url(https://static.rentacar.fr/images/cms_uploaded/pages/hub-vehicule/vp/location-voiture-luxe-rentacar.png);
 }

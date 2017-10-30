@@ -13,21 +13,22 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="../js/vendor/modernizr-2.8.3.min.js"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
-        <header>
+        <header class="container bg-faded">
           <h1>Liste Vehicule</h1>
-          <article class="card">
+          <article>
             <h2>Nouveau Vehicule</h2>
             <article class="d-flex justify-content-around">
               <form class="d-inline-block" action="" method="post">
-                <input type="submit" name="voiture" value="creer voiture">
+                <input class='btn material-icons bg-primary' type="submit" name="voiture" value="directions_car">
               </form>
               <form class="d-inline-block" action="" method="post">
-                <input type="submit" name="moto" value="creer moto">
+                <input class='btn material-icons bg-primary' type="submit" name="moto" value="motorcycle">
               </form>
               <form class="d-inline-block" action="" method="post">
-                <input type="submit" name="camion" value="creer camion">
+                <input class='btn material-icons bg-primary'type="submit" name="camion" value="directions_transit">
               </form>
             </article>
             <?php if (isset($_POST['voiture'])) {
@@ -89,20 +90,20 @@
                 <input type="text" name="anneeSortie" value=""><br>
                 <label for="">hauteur : </label>
                 <input type="text" name="hauteur" value=""><br>
-                <input type="submit" name="newCamion" value="Nouveau Camion">
+                <input class='btn bg-primary' type="submit" name="newCamion" value="Nouveau Camion">
               </form>
               <?php
             } ?>
 
           </article>
         </header>
-        <main>
+        <main class='container bg-faded'>
           <h3>Voiture</h3>
           <section class='d-flex justify-content-around flex-wrap'>
             <?php
             foreach ($afficheVoiture as $key => $value) {
               ?>
-              <article class="carteVehicule card m-2 col-sm-12 col-md-5 col-lg-3 d-inline-block ">
+              <article class="bg-faded carteVehicule card m-2 col-sm-12 col-md-5 col-lg-3 d-inline-block ">
                 <h3>nom vehicule : <?php echo $value['nom_vehicule']; ?></h3>
                 <h4>marque : <?php echo $value['marque_vehicule']; ?></h4>
                 <h6>type : <?php echo $value['type_vehicule']; ?></h6>
@@ -112,21 +113,21 @@
                   <p>annee sortie : <?php echo $value['annee_sortie']; ?></p>
                   <p>nombre de porte : <?php echo $value['nbPorte']; ?></p>
                 </div>
-                <section>
+                <section class="d-flex justify-content-around p-3 flex-wrap">
+                  <!-- FORM FOR DETAIL CAR -->
                   <form class="" action="control/controlDetail.php" method="post">
                     <input style="display:none" type="text" name="id" value="<?php echo $value['id']; ?>">
-                    <input type="submit" name="detailVoiture" value="Detail">
+                    <input class="btn bg-success material-icons" type="submit" name="detailVoiture" value="zoom_in">
                   </form>
+                  <!-- FORM FOR DELETE CAR -->
                   <form class="" action="" method="post">
                     <input style="display:none" type="text" name="id" value="<?php echo $value['id']; ?>">
                     <input style="display:none" type="text" name="typeVehicule" value="<?php echo $value['type_vehicule']; ?>">
-                    <input type="submit" name="effacerVoiture" value="Effacer">
+                    <input class='btn bg-danger material-icons' type="submit" name="effacerVoiture" value="delete_sweep">
                   </form>
                   <?php if (isset($_POST['formulaireVoiture'])) {?>
                     <form class="" action="" method="post">
                       <input style="display:none" type="text" name="id" value="<?php echo $value['id'];?>"><br>
-                      <label for="">type de vehicule : </label>
-                      <input type="text" name="typeVehicule" value="<?php echo $value['type_vehicule']; ?>"><br>
                       <label for="">nom du vehicule : </label>
                       <input type="text" name="nomVehicule" value="<?php echo $value['nom_vehicule']; ?>"><br>
                       <label for="">marque du vehicule : </label>
@@ -145,8 +146,9 @@
                   }
                   elseif (!isset($_POST['formulaireVoiture'])) {
                     ?>
+                    <!-- FORM FOR DISPLAY FORM FOR UPDATE -->
                     <form class="" action="" method="post">
-                      <input type="submit" name="formulaireVoiture" value="update">
+                      <input class='btn bg-primary material-icons' type="submit" name="formulaireVoiture" value="system_update">
                     </form>
                     <?php
                   } ?>
@@ -160,7 +162,7 @@
             <?php
             foreach ($afficheMoto as $key => $value) {
               ?>
-              <article class="carteVehicule card m-2 col-sm-12 col-md-5 col-lg-3 d-inline-block">
+              <article class="bg-faded carteVehicule card m-2 col-sm-12 col-md-5 col-lg-3 d-inline-block p-3">
                 <h3>nom Vehicule : <?php echo $value['nom_vehicule']; ?></h3>
                 <h4>marque : <?php echo $value['marque_vehicule']; ?></h4>
                 <h6>type : <?php echo $value['type_vehicule']; ?></h6>
@@ -170,21 +172,22 @@
                   <p>annee sortie : <?php echo $value['annee_sortie']; ?></p>
                   <p>volume : <?php echo $value['volume']; ?> cm3</p>
                 </div>
-                <section>
+                <section class='d-flex justify-content-around flex-wrap'>
+                  <!-- FORM FOR DETAIL BIKE -->
                   <form class="" action="control/controlDetail.php" method="post">
                     <input style="display:none" type="text" name="id" value="<?php echo $value['id']; ?>">
-                    <input type="submit" name="detailMoto" value="Detail">
+                    <input class="btn bg-success material-icons" type="submit" name="detailMoto" value="zoom_in">
                   </form>
+
+                  <!-- FORM FOR DELETE BIKE -->
                   <form class="" action="" method="post">
                     <input style="display:none" type="text" name="id" value="<?php echo $value['id']; ?>">
                     <input style="display:none" type="text" name="typeVehicule" value="<?php echo $value['type_vehicule']; ?>">
-                    <input type="submit" name="effacerMoto" value="Effacer">
+                    <input class='btn bg-danger material-icons' type="submit" name="effacerMoto" value="delete_sweep">
                   </form>
                   <?php if (isset($_POST['formulaireMoto'])) {?>
                     <form class="" action="" method="post">
                       <input style="display:none" type="text" name="id" value="<?php echo $value['id'];?>"><br>
-                      <label for="">type de vehicule : </label>
-                      <input type="text" name="typeVehicule" value="<?php echo $value['type_vehicule']; ?>"><br>
                       <label for="">nom du vehicule : </label>
                       <input type="text" name="nomVehicule" value="<?php echo $value['nom_vehicule']; ?>"><br>
                       <label for="">marque du vehicule : </label>
@@ -203,8 +206,9 @@
                   }
                   elseif (!isset($_POST['formulaireMoto'])) {
                     ?>
+                    <!-- FORM FOR DISPLAY FORM FOR UPDATE BIKE -->
                     <form class="" action="" method="post">
-                      <input type="submit" name="formulaireMoto" value="update">
+                      <input class='btn bg-primary material-icons' type="submit" name="formulaireMoto" value="system_update">
                     </form>
                     <?php
                   }?>
@@ -218,7 +222,7 @@
             <?php
             foreach ($afficheCamion as $key => $value) {
               ?>
-              <article class="carteVehicule card m-2 col-sm-12 col-md-5 col-lg-3 d-inline-block">
+              <article class="bg-faded carteVehicule card m-2 col-sm-12 col-md-5 col-lg-3 d-inline-block">
                 <h3>nom Vehicule : <?php echo $value['nom_vehicule']; ?></h3>
                 <h4>marque : <?php echo $value['marque_vehicule']; ?></h4>
                 <h6>type : <?php echo $value['type_vehicule']; ?></h6>
@@ -228,21 +232,21 @@
                   <p>annee sortie : <?php echo $value['annee_sortie']; ?></p>
                   <p>hauteur : <?php echo $value['hauteur']; ?> Metre</p>
                 </div>
-                <section>
+                <section class='d-flex justify-content-around flex-wrap'>
+                  <!-- FORM FOR DETAIL ON TRUCK -->
                   <form class="" action="control/controlDetail.php" method="post">
                     <input style="display:none" type="text" name="id" value="<?php echo $value['id']; ?>">
-                    <input type="submit" name="detailCamion" value="Detail">
+                    <input class="btn bg-success material-icons" type="submit" name="detailCamion" value="zoom_in">
                   </form>
+                  <!-- Form FOR DELETE TRUCK -->
                   <form class="" action="" method="post">
                     <input style="display:none" type="text" name="id" value="<?php echo $value['id']; ?>">
                     <input style="display:none" type="text" name="typeVehicule" value="<?php echo $value['type_vehicule']; ?>">
-                    <input type="submit" name="effacerCamion" value="Effacer">
+                    <input class='btn bg-danger material-icons' type="submit" name="effacerCamion" value="delete_sweep">
                   </form>
                   <?php if (isset($_POST['formulaireCamion'])) {?>
                     <form class="" action="" method="post">
                       <input style="display:none" type="text" name="id" value="<?php echo $value['id'];?>"><br>
-                      <label for="">type de vehicule : </label>
-                      <input type="text" name="typeVehicule" value="<?php echo $value['type_vehicule']; ?>"><br>
                       <label for="">nom du vehicule : </label>
                       <input type="text" name="nomVehicule" value="<?php echo $value['nom_vehicule']; ?>"><br>
                       <label for="">marque du vehicule : </label>
@@ -259,10 +263,11 @@
                     </form>
                     <?php
                   }
-                  elseif (!isset($_POST['formulaireMoto'])) {
+                  elseif (!isset($_POST['formulaireCamion'])) {
                     ?>
+                    <!-- Form FOR DISPLAY FORM FOR UPDATE TRUCK -->
                     <form class="" action="" method="post">
-                      <input type="submit" name="formulaireCamion" value="update">
+                      <input class='btn bg-primary material-icons' type="submit" name="formulaireCamion" value="system_update">
                     </form>
                     <?php
                   }?>
