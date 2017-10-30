@@ -20,6 +20,7 @@
           <h1>Liste Vehicule</h1>
           <article>
             <h2>Nouveau Vehicule</h2>
+            <!-- forms for display forms for car, bike or truck -->
             <article class="d-flex justify-content-around">
               <form class="d-inline-block" action="" method="post">
                 <input class='btn material-icons bg-primary' type="submit" name="voiture" value="directions_car">
@@ -33,6 +34,7 @@
             </article>
             <?php if (isset($_POST['voiture'])) {
               ?>
+              <!-- form for create a new car -->
               <h3>Nouvelle Voiture</h3>
               <form class=" formulaireCreation" action="" method="post">
                 <input style="display:none" type="text" name="id" value=""><br>
@@ -48,12 +50,13 @@
                 <input type="text" name="anneeSortie" value=""><br>
                 <label for="">nombre de Portes : </label>
                 <input type="text" name="nbPorte" value=""><br>
-                <input type="submit" name="newVoiture" value="Nouvelle Voiture">
+                <input class='btn bg-primary' type="submit" name="newVoiture" value="Nouvelle Voiture">
               </form>
               <?php
             }
             if (isset($_POST['moto'])) {
               ?>
+              <!-- form for create a new bike -->
               <h3>Nouvelle moto</h3>
               <form class="formulaireCreation" action="" method="post">
                 <input style="display:none" type="text" name="id" value=""><br>
@@ -69,12 +72,13 @@
                 <input type="text" name="anneeSortie" value=""><br>
                 <label for="">Volume: </label>
                 <input type="text" name="volume" value=""><br>
-                <input type="submit" name="newMoto" value="Nouvelle Moto">
+                <input class='btn bg-primary' type="submit" name="newMoto" value="Nouvelle Moto">
               </form>
               <?php
             }
             if (isset($_POST['camion'])) {
               ?>
+              <!-- form for create a new truck -->
               <h3>Nouveau Camion</h3>
               <form class="formulaireCreation" action="" method="post">
                 <input style="display:none" type="text" name="id" value=""><br>
@@ -126,6 +130,7 @@
                     <input class='btn bg-danger material-icons' type="submit" name="effacerVoiture" value="delete_sweep">
                   </form>
                   <?php if (isset($_POST['formulaireVoiture'])) {?>
+                    <!-- form for update Car -->
                     <form class="" action="" method="post">
                       <input style="display:none" type="text" name="id" value="<?php echo $value['id'];?>"><br>
                       <label for="">nom du vehicule : </label>
@@ -186,6 +191,7 @@
                     <input class='btn bg-danger material-icons' type="submit" name="effacerMoto" value="delete_sweep">
                   </form>
                   <?php if (isset($_POST['formulaireMoto'])) {?>
+                    <!-- form for update Bike -->
                     <form class="" action="" method="post">
                       <input style="display:none" type="text" name="id" value="<?php echo $value['id'];?>"><br>
                       <label for="">nom du vehicule : </label>
@@ -245,6 +251,7 @@
                     <input class='btn bg-danger material-icons' type="submit" name="effacerCamion" value="delete_sweep">
                   </form>
                   <?php if (isset($_POST['formulaireCamion'])) {?>
+                    <!-- form for update truck -->
                     <form class="" action="" method="post">
                       <input style="display:none" type="text" name="id" value="<?php echo $value['id'];?>"><br>
                       <label for="">nom du vehicule : </label>

@@ -153,6 +153,7 @@
         <?php }?>
       </main>
       <footer>
+        <!-- form for return to index page -->
         <form class="ml-5 mt-5" action="../index.php" method="post">
           <input class='btn material-icons bg-success' type="submit" name="" value="fast_rewind">
         </form>
