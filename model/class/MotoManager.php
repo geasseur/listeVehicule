@@ -38,9 +38,8 @@ class MotoManager{
     }
 
     //function for updated a bike object on the data base
-    public function updateMoto($id,$type_vehicule, $nom_vehicule, $marque_vehicule, $poids, $couleur, $annee_sortie, $volume){
-      $miseAJour = $this->_bdd->prepare('UPDATE Vehicule SET type_vehicule = :type_vehicule, nom_vehicule = :nom_vehicule, marque_vehicule = :marque_vehicule, poids=:poids, couleur=:couleur, annee_sortie=:annee_sortie, volume= :volume WHERE id = '.$id.'');
-      $miseAJour->bindValue(':type_vehicule', $type_vehicule, PDO::PARAM_STR);
+    public function updateMoto($id, $nom_vehicule, $marque_vehicule, $poids, $couleur, $annee_sortie, $volume){
+      $miseAJour = $this->_bdd->prepare('UPDATE Vehicule SET nom_vehicule = :nom_vehicule, marque_vehicule = :marque_vehicule, poids=:poids, couleur=:couleur, annee_sortie=:annee_sortie, volume= :volume WHERE id = '.$id.'');
       $miseAJour->bindValue(':nom_vehicule', $nom_vehicule, PDO::PARAM_STR);
       $miseAJour->bindValue(':marque_vehicule', $marque_vehicule, PDO::PARAM_STR);
       $miseAJour->bindValue(':poids', $poids, PDO::PARAM_INT);

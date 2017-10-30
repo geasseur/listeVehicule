@@ -39,9 +39,8 @@ class VoitureManager{
     }
 
     //function for updated a voiture object on the data base
-    public function updateVoiture($id,$type_vehicule, $nom_vehicule, $marque_vehicule, $poids, $couleur, $annee_sortie, $nbPorte){
-      $miseAJourVoiture = $this->_bdd->prepare('UPDATE Vehicule SET type_vehicule = :type_vehicule, nom_vehicule = :nom_vehicule, marque_vehicule = :marque_vehicule, poids = :poids, couleur = :couleur, annee_sortie = :annee_sortie, nbPorte = :nbPorte WHERE id = '.$id.' ');
-      $miseAJourVoiture->bindValue(':type_vehicule',$type_vehicule, PDO::PARAM_STR);
+    public function updateVoiture($id, $nom_vehicule, $marque_vehicule, $poids, $couleur, $annee_sortie, $nbPorte){
+      $miseAJourVoiture = $this->_bdd->prepare('UPDATE Vehicule SET nom_vehicule = :nom_vehicule, marque_vehicule = :marque_vehicule, poids = :poids, couleur = :couleur, annee_sortie = :annee_sortie, nbPorte = :nbPorte WHERE id = '.$id.' ');
       $miseAJourVoiture->bindValue(':nom_vehicule',$nom_vehicule, PDO::PARAM_STR);
       $miseAJourVoiture->bindValue(':marque_vehicule',$marque_vehicule, PDO::PARAM_STR);
       $miseAJourVoiture->bindValue(':poids',$poids, PDO::PARAM_INT);
