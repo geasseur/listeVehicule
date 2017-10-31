@@ -12,19 +12,28 @@ $afficheCamion = $camionManager->afficheCamions();
 
 //Delete Bike
 if (isset($_POST['effacerMoto']) and !empty($_POST['id']) and !empty($_POST['typeVehicule'])) {
-  $motoManager->deleteMoto($_POST['id'], $_POST['typeVehicule']);
+  $moto = new Moto([
+    'id'=>$_POST['id']
+  ]);
+  $motoManager->deleteMoto($moto);
   header('Location:index.php');
 }
 
 //delete Car
 if (isset($_POST['effacerVoiture']) and !empty($_POST['id']) and !empty($_POST['typeVehicule'])) {
-  $voitureManager->deleteVoiture($_POST['id'], $_POST['typeVehicule']);
+  $voiture = new Voiture([
+    'id'=>$_POST['id']
+  ]);
+  $voitureManager->deleteVoiture($voiture);
   header('Location:index.php');
 }
 
 //delete Truck
 if (isset($_POST['effacerCamion']) and !empty($_POST['id']) and !empty($_POST['typeVehicule'])) {
-  $camionManager->deleteCamion($_POST['id'], $_POST['typeVehicule']);
+  $camion = new Camion([
+    'id'=>$_POST['id']
+  ]);
+  $camionManager->deleteCamion($camion);
   header('Location:index.php');
 }
 
@@ -82,18 +91,48 @@ if (isset($_POST['newCamion'])) {
 //UPDATE CAR
 
 if (isset($_POST['updateVoiture'])) {
-  $voitureManager->updateVoiture($_POST['id'], $_POST['nomVehicule'], $_POST['marqueVehicule'], $_POST['poids'], $_POST['couleur'], $_POST['anneeSortie'], $_POST['nbPorte']);
+  $voiture = new Voiture([
+    'id'=>$_POST['id'],
+    'typeVehicule'=>'voiture',
+    'nomVehicule'=>$_POST['nomVehicule'],
+    'marqueVehicule'=>$_POST['marqueVehicule'],
+    'poids'=>$_POST['poids'],
+    'couleur'=>$_POST['couleur'],
+    'anneeSortie'=>$_POST['anneeSortie'],
+    'nbPorte'=>$_POST['nbPorte']
+  ]);
+  $voitureManager->updateVoiture($voiture);
   $afficheVoiture = $voitureManager->afficheVoitures();
 }
 
 //UPDATE BIKE
 if (isset($_POST['updateMoto'])) {
-  $voitureManager->updateVoiture($_POST['id'], $_POST['nomVehicule'], $_POST['marqueVehicule'], $_POST['poids'], $_POST['couleur'], $_POST['anneeSortie'], $_POST['volume']);
+  $moto = new Moto([
+    'id'=>$_POST['id'],
+    'typeVehicule'=>'moto',
+    'nomVehicule'=>$_POST['nomVehicule'],
+    'marqueVehicule'=>$_POST['marqueVehicule'],
+    'poids'=>$_POST['poids'],
+    'couleur'=>$_POST['couleur'],
+    'anneeSortie'=>$_POST['anneeSortie'],
+    'volume'=>$_POST['volume']
+  ]);
+  $motoManager->updateMoto($moto);
   $afficheMoto = $motoManager->afficheMotos();
 }
 
 //UPDATE TRUCK
 if (isset($_POST['updateCamion'])) {
-  $voitureManager->updateVoiture($_POST['id'], $_POST['nomVehicule'], $_POST['marqueVehicule'], $_POST['poids'], $_POST['couleur'], $_POST['anneeSortie'], $_POST['hauteur']);
+  $camion = new Camion([
+    'id'=>$_POST['id'],
+    'typeVehicule'=>'camion',
+    'nomVehicule'=>$_POST['nomVehicule'],
+    'marqueVehicule'=>$_POST['marqueVehicule'],
+    'poids'=>$_POST['poids'],
+    'couleur'=>$_POST['couleur'],
+    'anneeSortie'=>$_POST['anneeSortie'],
+    'hauteur'=>$_POST['hauteur']
+  ]);
+  $camionManager->updateCamion($camion);
   $afficheCamion = $camionManager->afficheCamions();
 }
