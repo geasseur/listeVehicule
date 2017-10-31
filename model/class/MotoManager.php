@@ -33,21 +33,21 @@ class MotoManager{
     }
 
     //function for deleted a bike object on the data base
-    public function deleteMoto($id,$type_vehicule){
-      $casseMoto = $this->_bdd->query('DELETE FROM Vehicule WHERE id = '.$id.' AND type_vehicule = "'.$type_vehicule.'" ');
+    public function deleteMoto(Moto $moto){
+      $casse = $this->_bdd->query('DELETE FROM Vehicule WHERE id = '.$moto->getId().' AND type_vehicule = "moto" ');
     }
 
     //function for updated a bike object on the data base
-    public function updateMoto($id, $nom_vehicule, $marque_vehicule, $poids, $couleur, $annee_sortie, $volume){
-      $miseAJour = $this->_bdd->prepare('UPDATE Vehicule SET nom_vehicule = :nom_vehicule, marque_vehicule = :marque_vehicule, poids=:poids, couleur=:couleur, annee_sortie=:annee_sortie, volume= :volume WHERE id = '.$id.'');
-      $miseAJour->bindValue(':nom_vehicule', $nom_vehicule, PDO::PARAM_STR);
-      $miseAJour->bindValue(':marque_vehicule', $marque_vehicule, PDO::PARAM_STR);
-      $miseAJour->bindValue(':poids', $poids, PDO::PARAM_INT);
-      $miseAJour->bindValue(':couleur', $couleur, PDO::PARAM_STR);
-      $miseAJour->bindValue(':annee_sortie', $annee_sortie, PDO::PARAM_INT);
-      $miseAJour->bindValue(':volume', $volume, PDO::PARAM_INT);
+    public function updateMoto(Moto $moto){
+      $miseAJour = $this->_bdd->prepare('UPDATE Vehicule SET nom_vehicule = :nom_vehicule, marque_vehicule = :marque_vehicule, poids=:poids, couleur=:couleur, annee_sortie=:annee_sortie, volume= :volume WHERE id = :id ');
+      $miseAJour->bindValue(':id', $moto->getId(), PDO::PARAM_INT);
+      $miseAJour->bindValue(':nom_vehicule', $moto->getNomVehicule(), PDO::PARAM_STR);
+      $miseAJour->bindValue(':marque_vehicule', $moto->getMarqueVehicule(), PDO::PARAM_STR);
+      $miseAJour->bindValue(':poids', $moto->getPoids(), PDO::PARAM_INT);
+      $miseAJour->bindValue(':couleur', $moto->getCouleur(), PDO::PARAM_STR);
+      $miseAJour->bindValue(':annee_sortie', $moto->getAnneeSortie(), PDO::PARAM_INT);
+      $miseAJour->bindValue(':volume', $moto->getVolume(), PDO::PARAM_INT);
       $miseAJour->execute();
-      //type_vehicule = '.$type_vehicule.', nom_vehicule = '.$nom_vehicule.', marque_vehicule = '.$marque_vehicule.', poids = '.$poids.', couleur = '.$couleur.', annee_sortie = '.$annee_sortie.', nbPorte = '.$nbPorte.' WHERE id = '.$id'
     }
 
     //function for list all bike objects
@@ -57,8 +57,8 @@ class MotoManager{
       return $afficheMoto->fetchAll();
     }
 
-    public function afficheMoto($id){
-      $afficheMoto= $this->_bdd->query('SELECT id, type_vehicule, nom_vehicule, marque_vehicule, poids, couleur, annee_sortie, volume from Vehicule WHERE id = '.$id.' AND type_vehicule = "moto"');
+    public function afficheMoto(Moto $moto){
+      $afficheMoto= $this->_bdd->query('SELECT id, type_vehicule, nom_vehicule, marque_vehicule, poids, couleur, annee_sortie, volume from Vehicule WHERE id = '.$moto->getId().' AND type_vehicule = "moto" ');
 
       return $afficheMoto->fetch();
     }

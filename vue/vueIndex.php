@@ -193,7 +193,7 @@
                   <?php if (isset($_POST['formulaireMoto'])) {?>
                     <!-- form for update Bike -->
                     <form class="" action="" method="post">
-                      <input style="display:none" type="text" name="id" value="<?php echo $value['id'];?>"><br>
+                      <input type="text" name="id" value="<?php echo $value['id'];?>"><br>
                       <label for="">nom du vehicule : </label>
                       <input type="text" name="nomVehicule" value="<?php echo $value['nom_vehicule']; ?>"><br>
                       <label for="">marque du vehicule : </label>
